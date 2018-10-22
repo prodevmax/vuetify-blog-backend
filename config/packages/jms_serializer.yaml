@@ -1,0 +1,19 @@
+jms_serializer:
+    visitors:
+        xml:
+            format_output: '%kernel.debug%'
+    metadata:
+        auto_detection: false
+        directories:
+            article:
+                namespace_prefix: App\Domain\Article
+                path: '%kernel.project_dir%/config/mapping/serializer/article'
+#    metadata:
+#        auto_detection: false
+#        directories:
+#            any-name:
+#                namespace_prefix: "My\\FooBundle"
+#                path: "@MyFooBundle/Resources/config/serializer"
+#            another-name:
+#                namespace_prefix: "My\\BarBundle"
+#                path: "@MyBarBundle/Resources/config/serializer"

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<serializer>
+  <class name="App\Domain\Article\Article" exclusion-policy="ALL">
+    <property name="id"
+              expose="true"
+              type="integer"
+    />
+    <property name="title"
+              expose="true"
+              type="string"
+    />
+    <property name="author"
+              expose="true"
+              type="string"
+    />
+    <property name="body"
+              expose="true"
+              type="string"
+    />
+  </class>
+</serializer>
