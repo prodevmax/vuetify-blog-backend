@@ -85,15 +85,16 @@ class ArticleController extends FOSRestController
      */
     public function deleteArticle(int $articleId): View
     {
-        /** @var EntityRepository $repository */
         $em = $this->getDoctrine()->getManager();
+        /** @var EntityRepository $repository */
         $repository = $em->getRepository(Article::class);
         $article = $repository->find($articleId);
         if ($article) {
             $em->remove($article);
+            $em->flush();
+            return View::create([], Response::HTTP_NO_CONTENT);
         }
-        // In case our DELETE was a success we need to return a 204 HTTP NO CONTENT response. The object is deleted.
-        return View::create([], Response::HTTP_NO_CONTENT);
+        return View::create('Article not found', Response::HTTP_NOT_FOUND);
     }
 
     /**
@@ -104,12 +105,14 @@ class ArticleController extends FOSRestController
      */
     public function optionsArticle(int $articleId): View
     {
-        /** @var EntityRepository $repository */
+        /**  @var  */
         $em = $this->getDoctrine()->getManager();
+        /** @var EntityRepository $repository */
         $repository = $em->getRepository(Article::class);
         $article = $repository->find($articleId);
         if ($article) {
             return View::create($article, Response::HTTP_OK);
         }
+        return View::create('Article not found', Response::HTTP_NOT_FOUND);
     }
 }

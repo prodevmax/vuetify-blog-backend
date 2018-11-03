@@ -27,6 +27,13 @@ doctrine:
                 dir: '%kernel.project_dir%/config/mapping/orm/article'
                 prefix: 'App\Domain\Article'
                 alias: Article
+            user:
+                is_bundle: false
+                type: xml
+                dir: '%kernel.project_dir%/config/mapping/orm/user'
+                prefix: 'App\Domain\User'
+                alias: User
+
            # App:
            #     is_bundle: false
            #     type: annotation
