@@ -9,6 +9,7 @@ use Doctrine\Common\DataFixtures\Purger\ORMPurger;
 use Doctrine\ORM\EntityManager;
 use Symfony\Bundle\FrameworkBundle\Client;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
+use Symfony\Component\HttpFoundation\Response;
 
 abstract class ApiTestCase extends WebTestCase
 {
@@ -26,16 +27,13 @@ abstract class ApiTestCase extends WebTestCase
 
     protected function createUser(string $username = self::DEFAULT_USERNAME, string $plainPassword = self::DEFAULT_PASS): User
     {
-        $user = new User();
-        $user->setUsername($username);
+        $user = new User($username);
         $password = $this->getService('security.password_encoder')
             ->encodePassword($user, $plainPassword);
         $user->setPassword($password);
-
         $em = $this->getEntityManager();
         $em->persist($user);
         $em->flush();
-
         return $user;
     }
 
@@ -46,7 +44,7 @@ abstract class ApiTestCase extends WebTestCase
             $uri,
             [],
             [],
-            $this->headers(),
+            $this->getHeaders(),
             json_encode($params)
         );
     }
@@ -58,15 +56,15 @@ abstract class ApiTestCase extends WebTestCase
             $uri,
             $parameters,
             [],
-            $this->headers()
+            $this->getHeaders()
         );
     }
 
     protected function auth(string $username = self::DEFAULT_USERNAME, string $password = self::DEFAULT_PASS): void
     {
         $this->post('/api/auth_check', [
-            '_username' => $username,
-            '_password' => $password,
+            'username' => $username,
+            'password' => $password,
         ]);
 
         $response = json_decode($this->client->getResponse()->getContent(), true);
@@ -79,16 +77,15 @@ abstract class ApiTestCase extends WebTestCase
         $this->token = null;
     }
 
-    private function headers(): array
+    private function getHeaders(): array
     {
         $headers = [
             'CONTENT_TYPE' => 'application/json',
+            'ACCEPT' => 'application/json'
         ];
-
         if ($this->token) {
-            $headers['HTTP_Authorization'] = 'Bearer ' . $this->token;
+            $headers['HTTP_Authorization'] = sprintf('Bearer %s', $this->token);
         }
-
         return $headers;
     }
 

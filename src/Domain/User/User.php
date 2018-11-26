@@ -12,6 +12,11 @@ class User implements UserInterface
     /** @var string */
     private $password;
 
+    public function __construct(string $username)
+    {
+        $this->username=$username;
+    }
+
     /**
      * Returns the roles granted to the user.
      *

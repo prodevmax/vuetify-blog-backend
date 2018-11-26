@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<serializer>
+  <class name="App\Domain\User\User" exclusion-policy="ALL">
+    <property name="id"
+              expose="true"
+              type="integer"
+    />
+    <property name="username"
+              expose="true"
+              type="string"
+    />
+  </class>
+</serializer>

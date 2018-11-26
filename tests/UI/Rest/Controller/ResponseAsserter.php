@@ -37,7 +37,7 @@ class ResponseAsserter extends Assert
     /**
      * Asserts the specific propertyPath is in the JSON response
      *
-     * @param ResponseInterface $response
+     * @param Response $response
      * @param string $propertyPath e.g. firstName, battles[0].programmer.username
      * @throws \Exception
      */
@@ -50,7 +50,7 @@ class ResponseAsserter extends Assert
     /**
      * Asserts the given property path does *not* exist
      *
-     * @param ResponseInterface $response
+     * @param Response $response
      * @param string $propertyPath e.g. firstName, battles[0].programmer.username
      * @throws \Exception
      */

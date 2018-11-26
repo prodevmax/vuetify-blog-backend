@@ -8,6 +8,9 @@ jms_serializer:
             article:
                 namespace_prefix: App\Domain\Article
                 path: '%kernel.project_dir%/config/mapping/serializer/article'
+            user:
+                namespace_prefix: App\Domain\User
+                path: '%kernel.project_dir%/config/mapping/serializer/user'
 #    metadata:
 #        auto_detection: false
 #        directories:
