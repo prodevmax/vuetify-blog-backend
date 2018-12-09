@@ -17,5 +17,9 @@
               expose="true"
               type="string"
     />
+    <property name="file"
+              expose="true"
+              type="App\Domain\Article\File"
+    />
   </class>
 </serializer>

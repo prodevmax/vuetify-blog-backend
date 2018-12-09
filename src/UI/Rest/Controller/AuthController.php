@@ -7,7 +7,6 @@ use FOS\RestBundle\Controller\FOSRestController;
 use FOS\RestBundle\View\View;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Security\Core\Exception\BadCredentialsException;
 use FOS\RestBundle\Controller\Annotations as Rest;
 
 class AuthController extends FOSRestController

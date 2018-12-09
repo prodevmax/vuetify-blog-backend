@@ -2,6 +2,7 @@
 namespace App\UI\Rest\Controller;
 
 use App\Domain\Article\Article;
+use App\Domain\Article\File;
 use Doctrine\ORM\EntityRepository;
 use FOS\RestBundle\Controller\FOSRestController;
 use FOS\RestBundle\View\View;
@@ -40,6 +41,7 @@ class ArticleController extends FOSRestController
         $article->setTitle($request->get('title'));
         $article->setAuthor($request->get('author'));
         $article->setBody($request->get('body'));
+        $article->setFile(new File($request->get('file_name')));
         $em = $this->getDoctrine()->getManager();
         $em->persist($article);
         $em->flush();
@@ -59,6 +61,7 @@ class ArticleController extends FOSRestController
             $article->setTitle($request->get('title'));
             $article->setAuthor($request->get('author'));
             $article->setBody($request->get('body'));
+            $article->setFile(new File($request->get('file_name')));
             $em->flush();
         }
         return View::create($article, Response::HTTP_OK);
@@ -70,11 +73,11 @@ class ArticleController extends FOSRestController
      *
      * @return View
      */
-    public function getArticles()
+    public function getArticles(): View
     {
         $repository = $this->getDoctrine()->getRepository(Article::class);
-        $articles = $repository->findall();
-        return View::create($articles, Response::HTTP_OK , []);
+        $articles = $repository->findAll();
+        return View::create($articles, Response::HTTP_OK);
     }
 
     /**

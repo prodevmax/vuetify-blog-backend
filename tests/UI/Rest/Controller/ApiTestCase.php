@@ -17,7 +17,14 @@ abstract class ApiTestCase extends WebTestCase
 
     public const DEFAULT_PASS = '1234567890';
 
+    /** @var ResponseAsserter */
     private $responseAsserter;
+
+    /** @var null|Client */
+    protected $client;
+
+    /** @var null|string */
+    protected $token;
 
     protected function setUp()
     {
@@ -41,6 +48,18 @@ abstract class ApiTestCase extends WebTestCase
     {
         $this->client->request(
             'POST',
+            $uri,
+            [],
+            [],
+            $this->getHeaders(),
+            json_encode($params)
+        );
+    }
+
+    protected function put(string $uri, array $params): void
+    {
+        $this->client->request(
+            'PUT',
             $uri,
             [],
             [],
@@ -122,10 +141,5 @@ abstract class ApiTestCase extends WebTestCase
     }
 
 
-    /** @var null|Client */
-    protected $client;
-
-    /** @var null|string */
-    private $token;
 
 }

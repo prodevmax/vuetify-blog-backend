@@ -10,6 +10,24 @@ class Article {
     public $author;
     /** @var string */
     public $body;
+    /** @var File */
+    public $file;
+
+    /**
+     * @return File
+     */
+    public function getFile(): File
+    {
+        return $this->file;
+    }
+
+    /**
+     * @param File $file
+     */
+    public function setFile(File $file): void
+    {
+        $this->file = $file;
+    }
 
     /**
      * @return int
@@ -74,4 +92,5 @@ class Article {
     {
         $this->body = $body;
     }
+
 }

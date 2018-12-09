@@ -6,9 +6,11 @@ fos_rest:
     view_response_listener:  true
   format_listener:
       rules:
-          - { path: ^/api, prefer_extension: true, fallback_format: json, priorities: [ json, html ] }
+          - { path: ^/api, prefer_extension: true, fallback_format: json, priorities: [ json] }
           - { path: '^/', priorities: [ 'html', 'json', 'xml' ], fallback_format: ~, prefer_extension: true }
   param_fetcher_listener: true
+  serializer:
+    serialize_null: true
 #    param_fetcher_listener:  true
 #    allowed_methods_listener:  true
 #    routing_loader: true

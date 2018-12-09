@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<serializer>
+  <class name="App\Domain\Article\File" exclusion-policy="ALL">
+    <property name="name"
+              expose="true"
+              type="string"
+    />
+    <virtual-property method="getUrl"
+                      name="url"
+                      expose="true"
+                      type="string"
+                      access-type="public_method"
+    />
+  </class>
+</serializer>

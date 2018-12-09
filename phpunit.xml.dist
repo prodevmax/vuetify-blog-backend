@@ -25,6 +25,9 @@
         <env name="JWT_PUBLIC_KEY" value="%kernel.project_dir%/config/jwt/public.pem"/>
         <env name="JWT_PASSPHRASE" value="c55ec2d009525bdb8b8f09c8daf90464"/>
         <!-- ###- lexik/jwt-authentication-bundle ### -->
+        <env name="DATABASE_TEST_URL" value="mysql://root:secret@backend-mysql:3306/blog_test" />
+        <env name="FILES_UPLOAD_PATH" value="%kernel.project_dir%/var/test" />
+        <env name="FILES_UPLOAD_URL" value="http://127.0.0.1:8081/files" />
     </php>
 
     <testsuites>

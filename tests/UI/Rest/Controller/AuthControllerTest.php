@@ -14,7 +14,6 @@ class AuthControllerTest extends ApiTestCase
 
     public function testBadToken()
     {
-
         $this->client->request(
             'POST',
             '/api/articles',

@@ -5,6 +5,7 @@
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: 'en'
+    files_upload_path: '%env(resolve:FILES_UPLOAD_PATH)%'
 
 services:
     # default configuration for services in *this* file
