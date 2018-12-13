@@ -28,6 +28,10 @@
         <env name="DATABASE_TEST_URL" value="mysql://root:secret@backend-mysql:3306/blog_test" />
         <env name="FILES_UPLOAD_PATH" value="%kernel.project_dir%/var/test" />
         <env name="FILES_UPLOAD_URL" value="http://127.0.0.1:8081/files" />
+
+        <!-- ###+ php-amqplib/rabbitmq-bundle ### -->
+        <env name="RABBITMQ_URL" value="amqp://guest:guest@localhost:5672"/>
+        <!-- ###- php-amqplib/rabbitmq-bundle ### -->
     </php>
 
     <testsuites>
